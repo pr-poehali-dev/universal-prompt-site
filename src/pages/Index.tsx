@@ -373,7 +373,7 @@ export default function Index() {
 
             <div>
               <h3 className="font-display text-3xl font-light mb-2" style={{ color: "hsl(var(--forest))" }}>
-                Ваше имя здесь
+                Гульмира Абу
               </h3>
               <p className="font-body text-sm mb-6" style={{ color: "hsl(var(--gold))" }}>Психолог, коуч, ведущий программы</p>
 
