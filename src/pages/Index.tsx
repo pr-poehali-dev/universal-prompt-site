@@ -357,14 +357,13 @@ export default function Index() {
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative">
-              <div className="w-full aspect-square max-w-sm mx-auto overflow-hidden flex items-center justify-center"
-                style={{ borderRadius: "40% 60% 60% 40% / 40% 50% 50% 60%", background: "linear-gradient(135deg, hsl(var(--forest)) 0%, hsl(var(--forest-mid)) 100%)" }}>
-                <div className="text-center">
-                  <Icon name="User" size={80} className="text-white/20 mx-auto" />
-                  <p className="mt-4 text-sm px-8 font-body" style={{ color: "rgba(255,255,255,0.4)" }}>
-                    Добавьте своё фото
-                  </p>
-                </div>
+              <div className="w-full aspect-square max-w-sm mx-auto overflow-hidden"
+                style={{ borderRadius: "40% 60% 60% 40% / 40% 50% 50% 60%" }}>
+                <img
+                  src="https://cdn.poehali.dev/projects/5cd481a9-de3c-416c-8495-bc47c42b6b7e/bucket/1aa9b95f-7410-4b10-812b-b2654318bf07.png"
+                  alt="Автор программы"
+                  className="w-full h-full object-cover object-top"
+                />
               </div>
               <div className="absolute -bottom-4 -right-4 bg-white rounded-3xl p-4 shadow-lg" style={{ border: "1px solid hsl(var(--border))" }}>
                 <div className="font-display text-3xl font-light" style={{ color: "hsl(var(--gold))" }}>6</div>
