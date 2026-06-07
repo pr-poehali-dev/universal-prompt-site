@@ -113,6 +113,7 @@ const testimonials = [
 export default function Index() {
   const [formData, setFormData] = useState({ name: "", phone: "", format: "", comment: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const scrollTo = (id: string) => {
@@ -120,8 +121,17 @@ export default function Index() {
     setMenuOpen(false);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+    try {
+      await fetch("https://functions.poehali.dev/8334cd15-48b8-4e00-8de6-3b38c057e202", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+    } catch (err) { console.error(err); }
+    setLoading(false);
     setSubmitted(true);
   };
 
@@ -588,8 +598,8 @@ export default function Index() {
                 />
               </div>
 
-              <button type="submit" className="btn-primary w-full">
-                Отправить заявку
+              <button type="submit" className="btn-primary w-full" disabled={loading}>
+                {loading ? "Отправляю..." : "Отправить заявку"}
               </button>
 
               <p className="font-body text-white/40 text-xs text-center">
