@@ -49,7 +49,7 @@ const formats = [
   {
     name: "Групповое сопровождение",
     duration: "6 недель",
-    price: "20 600 ₽",
+    price: "от 12 500 ₽",
     badge: "",
     features: [
       "Еженедельные групповые встречи",
@@ -63,7 +63,7 @@ const formats = [
   {
     name: "Личное сопровождение",
     duration: "6 недель",
-    price: "24 700 ₽",
+    price: "от 22 000 ₽",
     badge: "Популярный",
     features: [
       "Индивидуальные сессии каждую неделю",
@@ -82,11 +82,9 @@ const formats = [
     features: [
       "Полностью индивидуальный формат",
       "10 недель погружённой работы",
-      "Индивидуальные сессии каждую неделю",
-      "Корректировка до 2 сценариев",
+      "Сессии 2 раза в неделю",
       "Экстренная поддержка",
       "Работа на глубоком уровне изменений",
-      "🎁 Бонус: живые обои на телефон с аффирмациями под ваш сценарий",
     ],
     dark: true,
   },
@@ -113,7 +111,6 @@ const testimonials = [
 export default function Index() {
   const [formData, setFormData] = useState({ name: "", phone: "", format: "", comment: "" });
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const scrollTo = (id: string) => {
@@ -121,17 +118,8 @@ export default function Index() {
     setMenuOpen(false);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-    try {
-      await fetch("https://functions.poehali.dev/8334cd15-48b8-4e00-8de6-3b38c057e202", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-    } catch (err) { console.error(err); }
-    setLoading(false);
     setSubmitted(true);
   };
 
@@ -284,7 +272,7 @@ export default function Index() {
               Что изменится в вашей жизни
             </h2>
             <p className="font-body text-white/60 mt-4 text-lg max-w-2xl mx-auto">
-              Реальные изменения, которые происходят уже в процессе работы
+              Не обещания «легко и быстро». Реальные изменения, которые происходят в процессе работы
             </p>
           </div>
 
@@ -369,13 +357,14 @@ export default function Index() {
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative">
-              <div className="w-full aspect-square max-w-sm mx-auto overflow-hidden"
-                style={{ borderRadius: "40% 60% 60% 40% / 40% 50% 50% 60%" }}>
-                <img
-                  src="https://cdn.poehali.dev/projects/5cd481a9-de3c-416c-8495-bc47c42b6b7e/bucket/1aa9b95f-7410-4b10-812b-b2654318bf07.png"
-                  alt="Автор программы"
-                  className="w-full h-full object-cover object-top"
-                />
+              <div className="w-full aspect-square max-w-sm mx-auto overflow-hidden flex items-center justify-center"
+                style={{ borderRadius: "40% 60% 60% 40% / 40% 50% 50% 60%", background: "linear-gradient(135deg, hsl(var(--forest)) 0%, hsl(var(--forest-mid)) 100%)" }}>
+                <div className="text-center">
+                  <Icon name="User" size={80} className="text-white/20 mx-auto" />
+                  <p className="mt-4 text-sm px-8 font-body" style={{ color: "rgba(255,255,255,0.4)" }}>
+                    Добавьте своё фото
+                  </p>
+                </div>
               </div>
               <div className="absolute -bottom-4 -right-4 bg-white rounded-3xl p-4 shadow-lg" style={{ border: "1px solid hsl(var(--border))" }}>
                 <div className="font-display text-3xl font-light" style={{ color: "hsl(var(--gold))" }}>6</div>
@@ -385,7 +374,7 @@ export default function Index() {
 
             <div>
               <h3 className="font-display text-3xl font-light mb-2" style={{ color: "hsl(var(--forest))" }}>
-                Гульмира Абу
+                Ваше имя здесь
               </h3>
               <p className="font-body text-sm mb-6" style={{ color: "hsl(var(--gold))" }}>Психолог, коуч, ведущий программы</p>
 
@@ -598,8 +587,8 @@ export default function Index() {
                 />
               </div>
 
-              <button type="submit" className="btn-primary w-full" disabled={loading}>
-                {loading ? "Отправляю..." : "Отправить заявку"}
+              <button type="submit" className="btn-primary w-full">
+                Отправить заявку
               </button>
 
               <p className="font-body text-white/40 text-xs text-center">
